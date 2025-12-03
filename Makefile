@@ -22,4 +22,8 @@ all: $(EXE)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@ $(LDFLAGS)
 
 clean:
-	rm -f $(EXE)
+ifeq ($(OS),Windows_NT)
+	del /Q *.exe 2>nul
+else
+	rm -f $(EXE) *.exe
+endif
